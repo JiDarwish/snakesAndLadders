@@ -1,4 +1,18 @@
-// /////////////////////////////////////time of game
+//////////////////////////////////////// Random colors
+randomizeCellColors()
+
+function randomizeCellColors() {
+  const cells = document.getElementsByClassName('cell')
+  const possibleColors = ['red', 'blue', 'green', 'yellow']
+
+  for (const cell of cells) {
+    cell.style.backgroundColor =
+      possibleColors[Math.floor(Math.random() * possibleColors.length - 1) + 1]
+  }
+}
+
+////////////////////////////////////////time of game
+
 const gameTimer = setInterval(incTimeSinceStart, 1000)
 let secs = 0
 
@@ -35,4 +49,22 @@ function fullScreen(e) {
     /* IE/Edge */
     elem.msRequestFullscreen()
   }
+}
+
+/////////////////////////////////////////// ROLL THE DICE EFFECT
+const rollDiceBtn = document.getElementById('rollDiceBtn')
+rollDiceBtn.onclick = rollDice
+
+function rollDice(e) {
+  const dice = document.getElementById('diceImg')
+  const gotten = Math.floor(Math.random() * 6) + 1
+
+  dice.classList.toggle('diceImg-active')
+  setTimeout(() => {
+    dice.childNodes[1].setAttribute('src', '/images/dice' + gotten + '.png')
+  }, 600)
+  // setTimeout(
+  //   () => dice.childNodes[1].setAttribute('src', '/images/whole-dice.png'),
+  //   2750
+  // )
 }

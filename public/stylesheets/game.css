@@ -1,4 +1,4 @@
-#container {
+#boardContainer {
   position: relative;
   width: 750px;
   border: 2px solid yellow;
@@ -114,4 +114,59 @@
   height: 180px;
   width: 50px;
   transform: rotate(60deg);
+}
+
+main {
+  display: flex;
+  justify-content: space-around;
+  padding: 40px;
+}
+
+#infoSide {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+#gameTime {
+  background-color: aqua;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+#gameTime > div {
+  font-size: 80px;
+}
+
+#playersBoard {
+  background-color: aqua;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+#turnContainer {
+  background-color: aqua;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  margin-top: 150px;
+}
+
+#diceImg {
+  width: 128px;
+  margin: auto;
+  transition: all 0.75s ease;
+}
+
+.diceImg-active {
+  transform: rotate(1800deg);
+}
+
+#fullScreenBtn {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
 }
