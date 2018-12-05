@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="/stylesheets/global.css" />
     <link rel="stylesheet" href="/stylesheets/splash.css" />
   </head>
+  <!-- basics -->
+
   <body>
     <header>
       <h1>Snakes and ladders!</h1>
@@ -15,8 +17,17 @@
     </header>
 
     <main>
+      <!-- we have two major divs to split the splash into two major -->
       <div>
-        <h1><a id="playBtn" href="/game">PLAY</a></h1>
+        <!--
+          <form action="/register_player" method="POST" id="playerNameForm">
+            <label for="playerName">Name</label>
+            <input type="text" name="playerName" id="playerName" />
+            <input type="submit" value="Play!" />
+          </form>
+        -->
+
+        <h1><a href="/game">Play</a></h1>
 
         <div id="stats">
           <h2>Statistics</h2>
@@ -47,4 +58,6 @@
       </div>
     </main>
   </body>
+
+  <script src="/javascripts/splash.js"></script>
 </html>

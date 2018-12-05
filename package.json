@@ -3,8 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node -e 'ejs|css' ./bin/www",
-    "watch": "nodemon -e 'ejs|css' ./bin/www"
+    "start": "node app.js",
+    "watch": "nodemon -e 'ejs|css|js' app.js"
   },
   "dependencies": {
     "cookie-parser": "~1.4.3",

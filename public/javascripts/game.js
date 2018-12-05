@@ -63,8 +63,4 @@ function rollDice(e) {
   setTimeout(() => {
     dice.childNodes[1].setAttribute('src', '/images/dice' + gotten + '.png')
   }, 600)
-  // setTimeout(
-  //   () => dice.childNodes[1].setAttribute('src', '/images/whole-dice.png'),
-  //   2750
-  // )
 }
