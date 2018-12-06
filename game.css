@@ -1,0 +1,173 @@
+#boardContainer {
+  position: relative;
+  width: 750px;
+  border: 2px solid yellow;
+}
+
+#board {
+  display: grid;
+  grid-template-columns: 75px 75px 75px 75px 75px 75px 75px 75px 75px 75px;
+}
+
+.cell {
+  width: 75px;
+  height: 75px;
+  background-color: red;
+  border: 1px solid black;
+  line-height: 30px;
+  text-align: center;
+}
+
+.imgOnBoard {
+  position: absolute;
+  width: 100px;
+}
+
+.imgOnBoard > img {
+  width: 100%;
+  height: 100%;
+}
+
+#ladder1 {
+  bottom: 90px;
+  right: 90px;
+  height: 200px;
+  width: 120px;
+  transform: rotate(-30deg);
+}
+
+#ladder2 {
+  top: 100px;
+  left: 240px;
+  height: 180px;
+  width: 120px;
+  transform: rotate(-25deg);
+}
+
+#ladder3 {
+  bottom: 20px;
+  left: 90px;
+  height: 180px;
+  width: 120px;
+  transform: rotate(20deg);
+}
+
+#ladder4 {
+  bottom: 330px;
+  left: 10px;
+  height: 180px;
+  width: 120px;
+  transform: rotate(25deg);
+}
+
+#ladder5 {
+  bottom: 300px;
+  left: 420px;
+  height: 230px;
+  width: 120px;
+  transform: rotate(50deg);
+}
+
+#ladder6 {
+  top: -20px;
+  right: 50px;
+  height: 180px;
+  width: 120px;
+  transform: rotate(-60deg);
+}
+
+#snake1 {
+  top: 60px;
+  right: 220px;
+  height: 180px;
+  width: 50px;
+  transform: rotate(60deg);
+}
+
+#snake2 {
+  bottom: 262px;
+  left: 282px;
+  height: 180px;
+  width: 50px;
+  transform: rotate(-30deg);
+}
+
+#snake3 {
+  top: 250px;
+  right: 50px;
+  height: 180px;
+  width: 50px;
+  transform: rotate(-20deg);
+}
+
+#snake4 {
+  bottom: -5px;
+  left: 309px;
+  height: 180px;
+  width: 50px;
+  transform: rotate(-70deg);
+}
+
+#snake5 {
+  top: -5px;
+  left: 98px;
+  height: 180px;
+  width: 50px;
+  transform: rotate(60deg);
+}
+
+main {
+  display: flex;
+  justify-content: space-around;
+  padding: 40px;
+}
+
+#infoSide {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+#gameTime {
+  background-color: aqua;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+#gameTime > div {
+  font-size: 80px;
+}
+
+#playersBoard {
+  background-color: aqua;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+#turnContainer {
+  background-color: aqua;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  margin-top: 150px;
+}
+
+#diceImg {
+  width: 128px;
+  margin: auto;
+  transition: all 0.75s ease;
+}
+
+.diceImg-active {
+  transform: rotate(1800deg);
+}
+
+#fullScreenBtn {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  
+}

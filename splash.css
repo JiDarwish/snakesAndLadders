@@ -1,0 +1,82 @@
+main {
+  display: flex;
+  flex-direction: row;
+}
+
+body {
+  background-color: tomato;  
+}
+
+main > * {
+  width: 50%;
+}
+
+#img {
+  width: 200px;
+  margin: auto;
+  margin-top: 100px;
+}
+#welcomeid {
+  color: bisque;
+  font-family: "Times New Roman", serif;
+  font-size: 30px;
+}
+
+#blessid {
+  color: olivedrab;
+  font-family: "Georgia", serif;
+  font-size: 10px;
+  margin: 10px, 10px;
+
+
+}
+#sl {
+  font-size: 50px;
+
+}
+
+#stats {
+  padding: 20px;
+  background-color: rgb(141, 200, 252);
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  width: 400px;
+  margin: auto;
+  margin-top: 100px;
+}
+
+#stats > h2 {
+  text-align: center;
+}
+
+#stats > * {
+  min-height: 50px;
+}
+
+.stat {
+  display: flex;
+  justify-content: space-around;
+}
+
+.stat > * {
+  height: 100%;
+  width: 50%;
+  text-align: center;
+  line-height: 50px;
+}
+
+
+#playBtn {
+  position: absolute;
+  top: 500px;
+  font-size: 100px;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+
+}
+
+.other {
+
+  position: absolute;
+  top: 700px;
+}
