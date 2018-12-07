@@ -1,8 +1,8 @@
-function Player(name, gameId) {
+function Player(name, socket) {
   this.name = name
   this.currentPos = 1
-  this.gameId = gameId
   this.movementsRecord = []
+  this.socket = socket
 }
 
 module.exports = Player

@@ -19,31 +19,23 @@
     <main>
       <!-- we have two major divs to split the splash into two major -->
       <div>
-        <!--
-          <form action="/register_player" method="POST" id="playerNameForm">
-            <label for="playerName">Name</label>
-            <input type="text" name="playerName" id="playerName" />
-            <input type="submit" value="Play!" />
-          </form>
-        -->
-
         <h1><a href="/game">Play</a></h1>
 
         <div id="stats">
           <h2>Statistics</h2>
           <div class="stat" id="numGames">
             <div>Number of games</div>
-            <div>1200</div>
+            <div><%= totalGames %></div>
           </div>
 
           <div class="stat" id="numOfPlayers">
             <div>Number of players</div>
-            <div>1200</div>
+            <div><%= totalPlayers %></div>
           </div>
 
           <div class="stat" id="avgGameDuration">
             <div>Average game time</div>
-            <div>1200</div>
+            <div><%= avgGameTime %></div>
           </div>
         </div>
       </div>

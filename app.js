@@ -8,8 +8,12 @@ const http = require('http')
 
 const indexRouter = require('./routes/index')
 const Game = require('./models/Game')
-const Player = require('./models/Player')
+const statistics = require('./models/Statistics')
+const messageTypes = require('./public/javascripts/messageTypes')
+const gameHandlers = require('./gameHandlers')
 const app = express()
+
+const port = process.env.PORT || 3000
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'))
@@ -42,30 +46,69 @@ app.use((err, req, res, next) => {
 const server = http.createServer(app)
 
 const wss = new Websocket.Server({ server })
-const webSockets = {}
-const connectionId = 0
+const webSockets = {} // websocket -> game
+let gameId = 0
 
 wss.on('connection', ws => {
-  console.log('connected')
+  // join the game if not yet joined && add new statistics data
+  handleNewConnection()
 
-  ws.on('message', msg => {
-    console.log(JSON.parse(msg))
+  ws.on('close', m => {
+    statistics.totalPlayers--
+    console.log('Another player left!')
   })
-  // // create a game or add him to the existing game
-  // let game = null
-  // if (webSockets[connectionId].hasTwoConnectedPlayers()) {
-  //   game = new Game(connectionId++)
-  //   webSockets[connectionId] = newGame
-  // } else {
-  //   game = webSockets[connectionId]
-  // }
-  // const PlayerName = req.cookies['gameToken'].split('=')[1]
-  // const newPlayer = new Player(PlayerName, connectionId)
-  // newGame.addPlayer(newPlayer)
 
-  // ws.on('throwDice', () => {
-  //   ws.emit('diceThrown', { value: Math.floor(Math.random() * 6) + 1 })
-  // })
+  ws.on('message', m => {
+    const msg = JSON.parse(m)
+    const game = webSockets[ws.id] // game conserning the current connection (if exists)
+
+    if (game.checkGameEnded()) {
+      return
+    }
+    switch (msg.type) {
+      case messageTypes.THROW_DICE:
+        gameHandlers.rollDice(game)
+        break
+      case messageTypes.ADD_PLAYER:
+        gameHandlers.addPlayerToGame(game, msg.content, ws)
+        break
+      case messageTypes.PLAYER_LEFT:
+        const playerWhoJustLeft =
+          game.playerA.socket === ws ? game.playerA : game.playerB
+
+        // TODO
+        console.log('A DAMN PLAYER HAS JUST LEFT! ' + playerWhoJustLeft.name)
+        break
+      default:
+        console.log('default hit')
+    }
+  })
+
+  function handleNewConnection() {
+    // 1. Adding user to a game
+    if (webSockets[gameId] && webSockets[gameId].canIJoinGame()) {
+      ws.id = gameId
+    } else {
+      const newGame = new Game(++gameId)
+      ws.id = gameId
+      webSockets[gameId] = newGame
+    }
+
+    const activeGames = Object.values(webSockets).filter(game =>
+      game.isGameStillActive()
+    )
+    console.log('here')
+    const inActiveGames = Object.values(webSockets).filter(
+      game =>
+        !activeGames.includes(game) &&
+        game.gameState !== game.gameStatusses.ABORD
+    )
+
+    statistics.calcAvg(inActiveGames)
+    console.log('length of active games is ', activeGames.length)
+    statistics.totalGames = activeGames.length
+    statistics.totalPlayers++
+  }
 })
 
-server.listen(3000, err => console.log)
+server.listen(port, console.log)

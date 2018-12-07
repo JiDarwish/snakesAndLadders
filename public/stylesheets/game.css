@@ -1,3 +1,22 @@
+#modal {
+  width: 100vw;
+  position: fixed;
+  z-index: 3;
+  left: 0;
+  top: 0;
+  height: 100vh;
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+}
+
+#modal-content {
+  background-color: #fefefe;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 50%;
+}
+
 #boardContainer {
   position: relative;
   width: 750px;
@@ -15,11 +34,36 @@
   border: 1px solid black;
   line-height: 30px;
   text-align: center;
+  position: relative;
+}
+
+.pin {
+  z-index: 2;
+  text-align: center;
+  line-height: 40px;
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  transition: all 0.5s linear;
+}
+
+#pinPlayerA {
+  top: 715px;
+  left: 695px;
+  background-color: purple;
+}
+
+#pinPlayerB {
+  top: 715px;
+  left: 695px;
+  background-color: black;
 }
 
 .imgOnBoard {
   position: absolute;
   width: 100px;
+  z-index: 1;
 }
 
 .imgOnBoard > img {
@@ -133,7 +177,7 @@ main {
   padding: 20px;
   border-radius: 10px;
   text-align: center;
-  margin-bottom: 50px;
+  /* margin-bottom: 20px; */
 }
 
 #gameTime > div {
@@ -147,12 +191,19 @@ main {
   text-align: center;
 }
 
+#announcementsContainer {
+  background-color: aqua;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+}
+
 #turnContainer {
   background-color: aqua;
   padding: 20px;
   border-radius: 10px;
   text-align: center;
-  margin-top: 150px;
+  /* margin-top: 150px; */
 }
 
 #diceImg {
@@ -169,4 +220,8 @@ main {
   position: absolute;
   bottom: 20px;
   right: 20px;
+}
+
+#returnToHome {
+  display: none;
 }

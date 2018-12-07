@@ -11,23 +11,6 @@ function randomizeCellColors() {
   }
 }
 
-////////////////////////////////////////time of game
-
-const gameTimer = setInterval(incTimeSinceStart, 1000)
-let secs = 0
-
-function incTimeSinceStart() {
-  const minutes = document.getElementById('minutes')
-  const seconds = document.getElementById('seconds')
-  secs++ // inc seconds
-
-  const newSeconds = secs % 60
-  const newMinutes = parseInt(secs / 60, 10)
-
-  seconds.innerText = newSeconds < 10 ? '0' + newSeconds : newSeconds
-  minutes.innerText = newMinutes < 10 ? '0' + newMinutes : newMinutes
-}
-
 ////////////////////////////////////////////// FULL SCREEN
 
 const fullScreenBtn = document.getElementById('fullScreenBtn')
@@ -51,16 +34,8 @@ function fullScreen(e) {
   }
 }
 
-/////////////////////////////////////////// ROLL THE DICE EFFECT
-const rollDiceBtn = document.getElementById('rollDiceBtn')
-rollDiceBtn.onclick = rollDice
+const returnToHomeBtn = document.getElementById('returnToHome')
 
-function rollDice(e) {
-  const dice = document.getElementById('diceImg')
-  const gotten = Math.floor(Math.random() * 6) + 1
-
-  dice.classList.toggle('diceImg-active')
-  setTimeout(() => {
-    dice.childNodes[1].setAttribute('src', '/images/dice' + gotten + '.png')
-  }, 600)
-}
+returnToHomeBtn.addEventListener('click', e => {
+  window.location.href = '/'
+})

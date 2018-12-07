@@ -13,8 +13,21 @@
 
     <!-- two major divs -->
 
+    <div id="modal">
+      <div id="modal-content">
+        <form action="#" id="playerNameForm">
+          <h1>Almost there!</h1>
+          <label for="playerName">Enter your name to start the game</label>
+          <input type="text" name="playersName" id="playersName" />
+          <input type="submit" value="Enter game!" />
+        </form>
+      </div>
+    </div>
+
     <main>
       <div id="boardContainer">
+        <span class="pin" id="pinPlayerA"></span>
+        <span class="pin" id="pinPlayerB"></span>
         <div id="board">
           <div class="imgOnBoard" id="ladder1" class="ladder">
             <img src="/images/ladder4.png" alt="ladder" />
@@ -173,6 +186,7 @@
       </div>
 
       <div id="infoSide">
+        <div><button id="returnToHome">Return to home page</button></div>
         <div>
           <div id="gameTime">
             <h1>Time since start</h1>
@@ -180,9 +194,17 @@
               <label id="minutes">00</label>:<label id="seconds">00</label>
             </div>
           </div>
+        </div>
+        <div id="playersBoard">
+          <div>
+            <span id="playerA">PENDING</span> VS
+            <span id="playerB">PENDING</span>
+          </div>
+        </div>
 
-          <div id="playersBoard">
-            <div>Game between <span>Tiz</span> & <span>Zit</span></div>
+        <div id="announcementsContainer">
+          <div id="announcementsContent">
+            Waiting on enough players to join the game
           </div>
         </div>
 
@@ -191,8 +213,8 @@
             <img src="/images/whole-dice.png" alt="dice" />
           </div>
           <div id="turnContainer">
-            <div>It's <span id="whosTurn">Tiz</span>'s turn now</div>
-            <button id="rollDiceBtn">Throw dice</button>
+            <div>It's <span id="whosTurn">-</span>'s turn now</div>
+            <button id="rollDiceBtn" disabled>Throw dice</button>
           </div>
         </div>
 
@@ -201,6 +223,7 @@
     </main>
   </body>
 
+  <script src="/javascripts/messageTypes.js"></script>
   <script src="/javascripts/game.js"></script>
   <script src="/javascripts/gameSocketInteraction.js"></script>
 </html>
