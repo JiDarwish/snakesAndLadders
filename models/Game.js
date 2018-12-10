@@ -37,10 +37,15 @@ Game.prototype.ladders = {
 }
 
 // All the statusses are from the gameStatusses obj
+
+//this function takes the new state as an argument and return it by checking the corrosponding state from the "Game.prototype.gameStatusses" function 
 Game.prototype.isValidState = function(newState) {
   return newState in this.gameStatusses
 }
 
+
+
+// this basically stringifyies the state
 Game.prototype.setState = function(newState) {
   console.assert(
     typeof newState == 'string',
@@ -49,7 +54,7 @@ Game.prototype.setState = function(newState) {
     typeof w
   )
 
-  // Check if it's a valid state before setting it
+  // Check if it's a valid state before setting it. if it isnt in the directory, it gives error.
   if (
     this.isValidState(newState)
     // this.isValidStateTransition(newState) // TODO keep or throw away
@@ -64,6 +69,8 @@ Game.prototype.setState = function(newState) {
   }
 }
 
+
+//taking a player, and if it's a player --> it is assigning to player a or player b if and only if the game status is 0 joint or (not full)
 Game.prototype.addPlayer = function(newPlayer) {
   console.assert(
     newPlayer instanceof Player,
@@ -83,10 +90,16 @@ Game.prototype.addPlayer = function(newPlayer) {
   }
 }
 
+
+
+
+
+// it checks that when two palyers have joined, the makes the status two joined
 Game.prototype.hasTwoConnectedPlayers = function() {
   return this.gameState === this.gameStatusses['2_JOINT']
 }
 
+//checking if you can join or not... you can omly join if the status is 0 or 1
 Game.prototype.canIJoinGame = function() {
   return (
     this.gameState === this.gameStatusses['0_JOINT'] ||
@@ -94,10 +107,12 @@ Game.prototype.canIJoinGame = function() {
   )
 }
 
+//this handles the change in turn
 Game.prototype.changeTurn = function() {
   this.whosTurn = this.whosTurn === this.playerA ? this.playerB : this.playerA
 }
 
+// this handles the manual movements, if it's valid, then you take what you have and move the gotten position. after that, you check whether the game ended or not
 Game.prototype.handleNextMovement = function(player, movementVal) {
   if (typeof movementVal !== 'number') {
     return new Error('Not a numeric movement value')
@@ -107,6 +122,11 @@ Game.prototype.handleNextMovement = function(player, movementVal) {
   player.movementsRecord.push(movementVal)
   this.checkGameEnded()
 }
+
+
+
+
+// this is comparing a player's position to 100 or more and if a player is in this range the game ends
 Game.prototype.checkGameEnded = function() {
   if (!this.playerA || !this.playerB) {
     return false
@@ -122,6 +142,9 @@ Game.prototype.checkGameEnded = function() {
   }
   return null
 }
+
+
+// if the player's current position is on a snke or a ladder, it moves u up or down the snaek or ladder amount
 Game.prototype.checkIfStoppedOnSnakeOrLadder = function(player) {
   if (player.currentPos in this.snakes) {
     // calc the value of the movement
@@ -141,6 +164,9 @@ Game.prototype.checkIfStoppedOnSnakeOrLadder = function(player) {
   }
   return false // it didn't stop on a snake neither a ladder
 }
+
+
+//this checks whether you can join the game or not. checks whether the oping position uis active
 
 Game.prototype.isGameStillActive = function() {
   return (
